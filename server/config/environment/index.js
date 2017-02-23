@@ -31,9 +31,8 @@ var all = {
   // Should we populate the DB with sample data?
   seedDB: false,
 
-  // Secret for session, you will want to change this and make it an environment variable
   secrets: {
-    session: 'test-secret'
+    session: process.env.SECRET
   },
 
   // MongoDB connection options
