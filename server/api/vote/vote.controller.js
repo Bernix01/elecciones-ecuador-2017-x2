@@ -1,11 +1,11 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/things              ->  index
- * POST    /api/things              ->  create
- * GET     /api/things/:id          ->  show
- * PUT     /api/things/:id          ->  upsert
- * PATCH   /api/things/:id          ->  patch
- * DELETE  /api/things/:id          ->  destroy
+ * GET     /api/votes              ->  index
+ * POST    /api/votes              ->  create
+ * GET     /api/votes/:id          ->  show
+ * PUT     /api/votes/:id          ->  upsert
+ * PATCH   /api/votes/:id          ->  patch
+ * DELETE  /api/votes/:id          ->  destroy
  */
 
 'use strict';
@@ -63,54 +63,54 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Things
+// Gets a list of Votes
 export function index(req, res) {
-  return Thing.find().exec()
+  return Vote.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Thing from the DB
+// Gets a single Vote from the DB
 export function show(req, res) {
-  return Thing.findById(req.params.id).exec()
+  return Vote.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Thing in the DB
+// Creates a new Vote in the DB
 export function create(req, res) {
-  return Thing.create(req.body)
+  return Vote.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Upserts the given Thing in the DB at the specified ID
+// Upserts the given Vote in the DB at the specified ID
 export function upsert(req, res) {
   if(req.body._id) {
     delete req.body._id;
   }
-  return Thing.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
+  return Vote.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
 
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Updates an existing Thing in the DB
+// Updates an existing Vote in the DB
 export function patch(req, res) {
   if(req.body._id) {
     delete req.body._id;
   }
-  return Thing.findById(req.params.id).exec()
+  return Vote.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(patchUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Thing from the DB
+// Deletes a Vote from the DB
 export function destroy(req, res) {
-  return Thing.findById(req.params.id).exec()
+  return Vote.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));
