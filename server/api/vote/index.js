@@ -1,9 +1,11 @@
 'use strict';
 
-var express = require('express');
-var controller = require('./thing.controller');
+import {Router} from 'express';
+import * as controller from './vote.controller';
+import * as auth from '../../auth/auth.service';
 
-var router = express.Router();
+
+var router = new Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);

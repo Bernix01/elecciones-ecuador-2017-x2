@@ -1,0 +1,1 @@
+echo "[config]\ncommand = npm install && npm" > .deployment
