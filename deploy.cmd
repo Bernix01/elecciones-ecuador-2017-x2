@@ -1,1 +1,2 @@
-(ECHO [config] && ECHO command = npm install ^&^& npm) >>.deployment
+(ECHO [config] && ECHO command = deployment.cmd) >>.deployment
+(ECHO npm install --production ^&^& npm start)>>deployment.cmd
