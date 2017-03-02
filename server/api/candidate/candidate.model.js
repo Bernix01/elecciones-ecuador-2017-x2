@@ -7,6 +7,10 @@ var CandidateSchema = new mongoose.Schema({
     name: String,
     info: String,
     pimage: String,
+    votes: {
+    	type:Number,
+    	default:0
+    },
     active: Boolean
 });
 

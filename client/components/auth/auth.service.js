@@ -93,7 +93,7 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
      * @param  {String}   newPassword
      * @param  {Function} callback    - function(error, user)
      * @return {Promise}
-     */
+     
     changePassword(oldPassword, newPassword, callback) {
       return User.changePassword({
         id: currentUser._id
@@ -106,7 +106,7 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
         return safeCb(callback)(err);
       })
         .$promise;
-    },
+    },*/
 
     /**
      * Gets all available info on a user

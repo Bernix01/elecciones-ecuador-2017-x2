@@ -5,31 +5,32 @@
 'use strict';
 
 import {EventEmitter} from 'events';
-var ThingEvents = new EventEmitter();
+var VoteEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)
-ThingEvents.setMaxListeners(0);
+VoteEvents.setMaxListeners(0);
 
 // Model events
 var events = {
   save: 'save',
-  remove: 'remove'
+  update: 'update',
+  count: 'count'
 };
 
 // Register the event emitter to the model events
-function registerEvents(Thing) {
+function registerEvents(Vote) {
   for(var e in events) {
     let event = events[e];
-    Thing.post(e, emitEvent(event));
+    Vote.post(e, emitEvent(event));
   }
 }
 
 function emitEvent(event) {
   return function(doc) {
-    ThingEvents.emit(`${event}:${doc._id}`, doc);
-    ThingEvents.emit(event, doc);
+    VoteEvents.emit(`${event}:${doc._id}`, doc);
+    VoteEvents.emit(event, doc);
   };
 }
 
 export {registerEvents};
-export default ThingEvents;
+export default VoteEvents;

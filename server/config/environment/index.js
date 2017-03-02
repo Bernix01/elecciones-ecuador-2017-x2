@@ -32,7 +32,7 @@ var all = {
   seedDB: false,
 
   secrets: {
-    session: process.env.SECRET
+    session: process.env.SECRET || 'secret'
   },
 
   // MongoDB connection options

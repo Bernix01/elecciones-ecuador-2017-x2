@@ -1,6 +1,13 @@
-<div id="timer">
-  <div id="days">{{days}}</div>
-  <div id="hours">{{hours}}</div>
-  <div id="minutes">{{minutes}}</div>
-  <div id="seconds">{{seconds}}</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-repeat="human in $ctrl.awesomecandidates">
+            <div>
+                <img src="" ng-src="{{human.pimage}}" class="img-responsive">
+                <h2>{{human.name}}</h2>
+                <h3>{{human.votes}}</h3>
+                <p>{{human.info}}</p>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

@@ -9,7 +9,7 @@ var router = new Router();
 
 router.get('/', auth.hasRole('admin'), controller.index);
 router.get('/:id', auth.hasRole('admin'), controller.show);
-router.post('/', controller.create);
+router.post('/', auth.hasRole('user'), controller.create);
 router.put('/:id', auth.hasRole('admin'), controller.upsert);
 
 module.exports = router;
